@@ -1,4 +1,4 @@
-"""Wrapper for G-Core DNS API."""
+"""Wrapper for Edge-Center DNS API."""
 
 import http
 import logging
@@ -12,24 +12,24 @@ from requests import Session
 logger = logging.getLogger(__name__)
 
 
-class GCoreException(Exception):
-    """G-Core DNS API client exception."""
+class ECenterException(Exception):
+    """Edge-Center DNS API client exception."""
 
 
-class GCoreConflictException(Exception):
-    """G-Core DNS API conflict exception."""
+class ECenterConflictException(Exception):
+    """Edge-Center DNS API conflict exception."""
 
 
-class GCoreNotFoundException(Exception):
-    """G-Core DNS API conflict exception."""
+class ECenterNotFoundException(Exception):
+    """Edge-Center DNS API conflict exception."""
 
 
-class GCoreClient:
-    """G-Core DNS API client."""
+class ECenterClient:
+    """Edge-Center DNS API client."""
 
     _root_zones = 'v2/zones'
-    _dns_api_url = 'https://api.gcorelabs.com/dns'
-    _auth_url = 'https://api.gcorelabs.com/iam'
+    _dns_api_url = 'https://api.edgecenter.ru/dns'
+    _auth_url = 'https://api.edgecenter.ru/iam'
     _timeout = 10.0
     _error_format = 'Error %s. %s: %r, data: "%r", response: %s'
 
@@ -68,12 +68,12 @@ class GCoreClient:
                 http.HTTPStatus.BAD_REQUEST, http.HTTPStatus.INTERNAL_SERVER_ERROR,
         ):
             logger.error(self._error_format, responce.status_code, method, url, data or params, responce.text)
-            raise GCoreException(responce.text)
+            raise ECenterException(responce.text)
         elif responce.status_code == http.HTTPStatus.CONFLICT:
-            raise GCoreConflictException(self._error_format % (responce.status_code, method, url,
+            raise ECenterConflictException(self._error_format % (responce.status_code, method, url,
                                                                data or params, responce.text))
         elif responce.status_code == http.HTTPStatus.NOT_FOUND:
-            raise GCoreNotFoundException(self._error_format % (responce.status_code, method, url,
+            raise ECenterNotFoundException(self._error_format % (responce.status_code, method, url,
                                                                data or params, responce.text))
         responce.raise_for_status()
         return responce
@@ -127,7 +127,7 @@ class GCoreClient:
     @staticmethod
     def _build_url(base: str, *items: typing.Iterable) -> typing.AnyStr:
         if not re.match(r'^https?://', base):
-            raise GCoreException('Error schema url: please, check schema in url: "%s"' % base)
+            raise ECenterException('Error schema url: please, check schema in url: "%s"' % base)
         for item in items:
             base = base.strip('/') + '/'
             base = urllib.parse.urljoin(base, item)

@@ -2,7 +2,7 @@ import json
 import pytest
 import responses
 
-from certbot_dns_gcore.dns_gcore import _GCoreClient
+from certbot_dns_ecenter.dns_ecenter import _ECenterClient
 from tests.conftest import txt_data_expected1, txt_data_expected2
 
 
@@ -10,19 +10,19 @@ from tests.conftest import txt_data_expected1, txt_data_expected2
 def test_gcoreclient_fail(kwargs):
     # check
     with pytest.raises(ValueError):
-        _GCoreClient(**kwargs)
+        _ECenterClient(**kwargs)
 
 
 @responses.activate
 @pytest.mark.parametrize('kwargs', ({'token': '123'}, {'login': 'user', 'password': 'test'}))
 def test_add_txt_record_success(kwargs, record_payload, mock_auth, mock_get_zones, mock_post_record):
     # act # check
-    assert _GCoreClient(**kwargs).add_txt_record(**record_payload) is None
+    assert _ECenterClient(**kwargs).add_txt_record(**record_payload) is None
 
 
 @responses.activate
 def test_update_txt_record_no_duplicates(record_payload, mock_auth, mock_dns_api, rrset_exists_two_records, kwargs={'token': '123'}):
-    _GCoreClient(**kwargs).add_txt_record(**record_payload)
+    _ECenterClient(**kwargs).add_txt_record(**record_payload)
     # post
     assert mock_dns_api.calls[1].request.body == b'{"resource_records": [{"content": ["123456790"], "enabled": true}], "ttl": 300}'
     # post: should get conflict on post
@@ -42,7 +42,7 @@ def test_del_txt_record_success(kwargs, record_payload, mock_auth, mock_get_zone
     record_payload.pop('record_ttl')
 
     # act # check
-    assert _GCoreClient(**kwargs).del_txt_record(**record_payload) is None
+    assert _ECenterClient(**kwargs).del_txt_record(**record_payload) is None
 
 
 @pytest.mark.parametrize('in_data, out_data', (
@@ -50,11 +50,11 @@ def test_del_txt_record_success(kwargs, record_payload, mock_auth, mock_get_zone
 ))
 def test_data_for_txt(in_data, out_data):
     # check
-    assert _GCoreClient._data_for_txt(300, in_data) == out_data
+    assert _ECenterClient._data_for_txt(300, in_data) == out_data
 
 
 @responses.activate
 @pytest.mark.parametrize('subdomain', ('test1.example.com', 'test2.test1.example.com', 'test3.test2.test1.example.com'))
 def test_find_zone_name_success(record_payload, subdomain, mock_auth, mock_get_zones):
     # check
-    assert _GCoreClient(token='test')._find_zone_name(subdomain) == record_payload['domain']
+    assert _ECenterClient(token='test')._find_zone_name(subdomain) == record_payload['domain']

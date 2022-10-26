@@ -24,4 +24,4 @@ Changelog
 
 0.1.0
 -----------------
-    * Realised g-core certbot plugin beta version
+    * Realised Edge-Center certbot plugin beta version

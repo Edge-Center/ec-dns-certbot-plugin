@@ -1,6 +1,6 @@
 from setuptools import find_packages
 from setuptools import setup
-from certbot_dns_gcore.__version__ import VERSION
+from certbot_dns_ecenter.__version__ import VERSION
 
 
 install_requires = [
@@ -17,14 +17,14 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    name='certbot-dns-gcore',
+    name='certbot-dns-ecenter',
     version=VERSION,
-    description="G-Core DNS Authenticator plugin for Certbot",
+    description="Edge-Center DNS Authenticator plugin for Certbot",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url='https://github.com/G-Core/gcore-dns-certbot-plugin',
-    author="G-Core Labs",
-    author_email='support@gcorelabs.com',
+    url='https://github.com/Edge-Center/ec-dns-certbot-plugin',
+    author="Edge-Center",
+    author_email='support@edgecenter.ru',
     license='Apache License 2.0',
     python_requires='>=3.8',
     packages=find_packages(),
@@ -35,7 +35,7 @@ setup(
     },
     entry_points={
         'certbot.plugins': [
-            'dns-gcore = certbot_dns_gcore.dns_gcore:Authenticator',
+            'dns-ecenter = certbot_dns_ecenter.dns_ecenter:Authenticator',
         ],
     },
 )

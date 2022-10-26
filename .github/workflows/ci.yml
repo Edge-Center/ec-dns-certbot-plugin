@@ -22,10 +22,10 @@ jobs:
           pip install -e .
 
       - name: Check pylint
-        run: pylint --rcfile=.pylintrc certbot_dns_gcore
+        run: pylint --rcfile=.pylintrc certbot_dns_ecenter
 
       - name: Check  flake8
-        run: flake8 --config setup.cfg certbot_dns_gcore
+        run: flake8 --config setup.cfg certbot_dns_ecenter
 
       - name: Check pytest
         run: pytest .

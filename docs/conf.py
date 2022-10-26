@@ -13,14 +13,14 @@
 import os
 import sys
 sys.path.insert(0, os.path.abspath('..'))
-from certbot_dns_gcore.__version__ import VERSION
+from certbot_dns_ecenter.__version__ import VERSION
 
 
 # -- Project information -----------------------------------------------------
 
-project = 'certbot_dns_gcore'
-copyright = '2022, G-Core'
-author = 'G-Core'
+project = 'certbot_dns_ecenter'
+copyright = '2022, Edge-Center'
+author = 'Edge-Center'
 
 # The full version, including alpha/beta/rc tags
 release = VERSION

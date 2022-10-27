@@ -71,12 +71,10 @@ class ECenterClient:
             raise ECenterException(responce.text)
         elif responce.status_code == http.HTTPStatus.CONFLICT:
             raise ECenterConflictException(
-                self._error_format % (responce.status_code, method, url, data or params,
-                responce.text))
+                self._error_format % (responce.status_code, method, url, data or params, responce.text))
         elif responce.status_code == http.HTTPStatus.NOT_FOUND:
             raise ECenterNotFoundException(
-                self._error_format % (responce.status_code, method, url, data or params,
-                responce.text))
+                self._error_format % (responce.status_code, method, url, data or params, responce.text))
         responce.raise_for_status()
         return responce
 

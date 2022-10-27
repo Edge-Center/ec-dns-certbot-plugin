@@ -1,5 +1,5 @@
 [![PyPI version](https://badge.fury.io/py/certbot-dns-gcore.svg)](https://badge.fury.io/py/certbot-dns-gcore)
-[![Documentation Status](https://readthedocs.org/projects/gcore-dns-certbot-plugin/badge/?version=latest)](https://gcore-dns-certbot-plugin.readthedocs.io/en/latest/)
+[![Documentation Status](https://readthedocs.org/projects/ec-dns-certbot-plugin/badge/?version=latest)](https://ec-dns-certbot-plugin.readthedocs.io/en/latest/)
 ![Tests](https://github.com/Edge-Center/ec-dns-certbot-plugin/actions/workflows/ci.yml/badge.svg)
 ![Build](https://github.com/Edge-Center/ec-dns-certbot-plugin/actions/workflows/build.yml/badge.svg)
 ![GitHub last commit](https://img.shields.io/github/last-commit/Edge-Center/ec-dns-certbot-plugin)

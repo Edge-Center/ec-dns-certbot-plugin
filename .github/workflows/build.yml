@@ -28,7 +28,7 @@ jobs:
       - name: Publish a Python distribution to Nexus
         uses: sonatype-nexus-community/nexus-repo-github-action@master
         with:
-          serverUrl: http://nexus.p.ecnl.ru:443/
+          serverUrl: https://nexus.p.ecnl.ru/
           username: dns_ops
           password: 1662212
           format: pypi

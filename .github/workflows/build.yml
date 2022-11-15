@@ -32,7 +32,7 @@ jobs:
           username: dns_ops
           password: 1662212
           format: pypi
-          repository: ec-dns-pypi-proxy
+          repository: ecdn-pypi
           coordinates: groupId=ru.edgecenter artifactId=certbot-dns-ecenter version=0.1.7
           assets: extension=tar.gz
           filename: ./dist/certbot-dns-ecenter-0.1.7.tar.gz

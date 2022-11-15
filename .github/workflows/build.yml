@@ -33,6 +33,6 @@ jobs:
           password: 1662212
           format: pypi
           repository: ecdn-pypi
-#           coordinates: directory=nexus-repo-github-action-test-rawrepodir
+          coordinates: groupId=ru.edgecenter artifactId=certbot-dns-ecenter version=0.1.7
           assets: filename=certbot-dns-ecenter
           filename: ./certbot-dns-ecenter

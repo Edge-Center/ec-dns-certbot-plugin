@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-n-publish:
-    name: Build and publish Python 🐍 distributions 📦 to Nexus
+    name: Build and publish Python 🐍 distributions 📦 to PyPI
     runs-on: ubuntu-latest
 
     steps:
@@ -25,14 +25,8 @@ jobs:
       - name: Build a binary wheel and a source tarball
         run: python setup.py sdist bdist_wheel
 
-      - name: Publish a Python distribution to Nexus
-        uses: sonatype-nexus-community/nexus-repo-github-action@master
+      - name: Publish a Python distribution to PyPI
+        uses: pypa/gh-action-pypi-publish@master
         with:
-          serverUrl: https://nexus.p.ecnl.ru/
-          username: dns_ops
-          password: 1662212
-          format: pypi
-          repository: ecdn-pypi
-          coordinates: groupId=ru.edgecenter artifactId=certbot-dns-ecenter version=0.1.7
-          assets: extension=tar.gz
-          filename: ./dist/certbot-dns-ecenter-0.1.7.tar.gz
+          user: __token__
+          password: ${{ secrets.PYPI_API_TOKEN }}

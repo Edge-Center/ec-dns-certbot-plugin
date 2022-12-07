@@ -12,7 +12,7 @@ API.
 
 Documentation
 ===============
-For full documentation, including installation, examples, changelog please see [readthedocs page](https://gcore-dns-certbot-plugin.readthedocs.io/en/latest/).
+For full documentation, including installation, examples, changelog please see [readthedocs page](https://ec-dns-certbot-plugin.readthedocs.io/en/latest/).
 
 Install
 ===============

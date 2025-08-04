@@ -1,6 +1,10 @@
 =================
 Changelog
 =================
+0.2.0
+-----------------
+    * update requirements
+
 0.1.9
 -----------------
     * replaced naming with EdgeCenter

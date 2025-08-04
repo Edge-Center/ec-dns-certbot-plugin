@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 Welcome to certbot_dns_ecenter's documentation!
-=============================================
+===============================================
 
 .. toctree::
    :maxdepth: 2

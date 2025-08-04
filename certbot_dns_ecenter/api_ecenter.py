@@ -33,6 +33,7 @@ class ECenterClient:
     _timeout = 10.0
     _error_format = 'Error %s. %s: %r, data: "%r", response: %s'
 
+    # pylint: disable=too-many-positional-arguments
     def __init__(self, token=None, login=None, password=None, api_url=None, dns_api_url=None, auth_url=None):
         self._session = Session()
         if token is not None:
@@ -125,7 +126,7 @@ class ECenterClient:
         return self._build_url(self._dns_api_url, self._root_zones, zone_name, rrset_name, type_)
 
     @staticmethod
-    def _build_url(base: str, *items: typing.Iterable) -> typing.AnyStr:
+    def _build_url(base: str, *items: typing.Iterable) -> str:
         if not re.match(r'^https?://', base):
             raise ECenterException('Error schema url: please, check schema in url: "%s"' % base)
         for item in items:

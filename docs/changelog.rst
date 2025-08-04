@@ -1,6 +1,10 @@
 =================
 Changelog
 =================
+0.1.9
+-----------------
+    * replaced naming with EdgeCenter
+
 0.1.8
 -----------------
     * add url EdgeCenter API 

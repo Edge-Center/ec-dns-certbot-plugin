@@ -1,7 +1,7 @@
 """
 The `certbot_dns_ecenter` plugin automates the process of
 completing a ``dns-01`` challenge (`acme.challenges.DNS01`) by creating, and
-subsequently removing, TXT records using the G-Core DNS API.
+subsequently removing, TXT records using the EdgeCenter DNS API.
 
 .. note::
    The plugin is not installed by default. It can be installed by command below.
@@ -46,7 +46,7 @@ The token needed by Certbot for add temporary TXT record to zone what you need c
 
 .. code-block:: ini
    :name: auth
-   :caption: Example `gcore.ini` file using authentication credentials (not recommended):
+   :caption: Example `ecenter.ini` file using authentication credentials (not recommended):
 
    # Edge-Center API credentials used by Certbot
    dns_ecenter_email = ec_user@example.com

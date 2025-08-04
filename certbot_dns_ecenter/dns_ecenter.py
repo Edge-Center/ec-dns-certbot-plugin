@@ -114,7 +114,7 @@ class _ECenterClient:
     record_type = 'TXT'
 
     def __init__(self, *args, **kwargs) -> None:
-        self.gcore = api_ecenter.ECenterClient(*args, **kwargs)
+        self.ecenter = api_ecenter.ECenterClient(*args, **kwargs)
 
     def add_txt_record(
             self, domain: str, record_name: str, record_content: str, record_ttl: int
@@ -130,15 +130,15 @@ class _ECenterClient:
         """
         domain = self._find_zone_name(domain=domain)
         try:
-            self.gcore.record_create(
+            self.ecenter.record_create(
                 domain, record_name, self.record_type, data=self._data_for_txt(record_ttl, [record_content]),
             )
         except ECenterConflictException:
             logger.debug('Record already present on zone. Try to update record content')
-            exist_record_content = self.gcore.record_content(domain, record_name, self.record_type)
+            exist_record_content = self.ecenter.record_content(domain, record_name, self.record_type)
             if record_content not in exist_record_content:
                 exist_record_content.append(record_content)
-            self.gcore.record_update(
+            self.ecenter.record_update(
                 domain,
                 record_name,
                 self.record_type,
@@ -156,11 +156,11 @@ class _ECenterClient:
         """
         try:
             domain = self._find_zone_name(domain)
-            self.gcore.record_get(domain, record_name, self.record_type)
+            self.ecenter.record_get(domain, record_name, self.record_type)
         except (api_ecenter.ECenterNotFoundException, api_ecenter.ECenterConflictException) as err:
             logger.debug('Encountered error finding zone_id during deletion: %s', err)
             return
-        self.gcore.record_delete(domain, record_name, self.record_type)
+        self.ecenter.record_delete(domain, record_name, self.record_type)
         logger.debug('Successfully deleted TXT record.')
 
     @classmethod
@@ -181,7 +181,7 @@ class _ECenterClient:
         limit = 100
         domain_slit_list = '.'.join(domain.split('.')[-2:])
         zone_name_guesses = dns_common.base_domain_name_guesses(domain)[:-1]
-        zones_raw = self.gcore.zones({'limit': limit, 'name': domain_slit_list})
+        zones_raw = self.ecenter.zones({'limit': limit, 'name': domain_slit_list})
         zones = [zona.get('name') for zona in zones_raw]
 
         for zone_name in zone_name_guesses:

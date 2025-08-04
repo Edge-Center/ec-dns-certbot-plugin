@@ -121,7 +121,7 @@ How to run\develop plugin in docker
 docker-compose run --rm --service-ports dev bash
 # commands below run inside docker container
 pip install -e .
-touch ./ecenter.ini # add g-core dns api credentials
+touch ./ecenter.ini # add edgecenter dns api credentials
 pip install certbot
 certbot certonly --authenticator dns-ecenter --dns-ecenter-credentials=./ecenter.ini -d 'example.com'
 ```

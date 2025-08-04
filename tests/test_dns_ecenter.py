@@ -7,7 +7,7 @@ from tests.conftest import txt_data_expected1, txt_data_expected2
 
 
 @pytest.mark.parametrize('kwargs', ({'token': None}, {'login': 'user'}, {'password': 'test'}))
-def test_gcoreclient_fail(kwargs):
+def test_ecenterclient_fail(kwargs):
     # check
     with pytest.raises(ValueError):
         _ECenterClient(**kwargs)

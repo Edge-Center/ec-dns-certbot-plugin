@@ -1,6 +1,10 @@
 =================
 Changelog
 =================
+0.2.1
+-----------------
+    * update documentation
+
 0.2.0
 -----------------
     * update requirements
